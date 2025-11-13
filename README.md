@@ -35,8 +35,6 @@ An **IR sensor** detects the presence of an object by emitting and receiving inf
 3. Select the **target microcontroller** or board and click **Next**.
    <img width="1110" height="624" alt="image" src="https://github.com/user-attachments/assets/f93d88b6-cd7f-49db-84de-351f9b116488" />
 
-
-
 4. Name the project.
    <img width="533" height="588" alt="image" src="https://github.com/user-attachments/assets/63de2bab-69d4-4cb9-8db6-1b57adff9878" />
 
@@ -63,29 +61,21 @@ An **IR sensor** detects the presence of an object by emitting and receiving inf
 11. Click **Debug** and connect the **STM Nucleo Board**.
     <img width="1080" height="608" alt="image" src="https://github.com/user-attachments/assets/f72fff44-6073-4ae4-aa78-0da455df9af1" />
 
-13. Click **Run** to execute the program.
-    
+13. Click **Run** to execute the program.  
 ---
-
 ### 💻 **Program**
-
-
 ```c
 #include "main.h"
-
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-
 int main(void)
 {
     HAL_Init();
     SystemClock_Config();
     MX_GPIO_Init();
-
     while (1)
     {
         GPIO_PinState ir = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10); // IR OUT at PA10 (D2)
-
 	      if (ir == GPIO_PIN_RESET)  // IR sensor HIGH = object detected
 	      {
 	          HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_SET); // Turn ON LED
@@ -94,7 +84,6 @@ int main(void)
 	      {
 	          HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_RESET); // Turn OFF LED
 	      }
-
 	      HAL_Delay(100);
     }
 }
@@ -102,14 +91,11 @@ int main(void)
 ---
 ### OUTPUT
 CASE 1: LED ON 
-
+<img width="1239" height="563" alt="image" src="https://github.com/user-attachments/assets/a9b23d39-241b-41d1-a496-d7b99afce1fd" />
 CASE 2: LED OFF
-
+<img width="1299" height="620" alt="image" src="https://github.com/user-attachments/assets/264e1fea-11ba-43f3-af7d-18f5372d1a0a" />
 ---
 ### RESULT
-
 The experiment on IR Sensor-Based Automatic LED Control using STM32 was successfully carried out. The STM32 microcontroller accurately read the IR sensor output and controlled the LED based on object detection. When an object was detected, the LED glowed (ON) and when no object was present, the LED remained OFF. Thus, the objective of the experiment was achieved.
-
-
 
 
